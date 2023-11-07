@@ -22,9 +22,9 @@ const App = () => {
     <>
       <Section title={'Please leave feedback'}>
         <FeedbackOptions
-          good={() => setGood(good + 1)}
-          neutral={() => setNeutral(neutral + 1)}
-          bad={() => setBad(bad + 1)}
+          good={() => setGood(prev => prev + 1)}
+          neutral={() => setNeutral(prev => prev + 1)}
+          bad={() => setBad(prev => prev + 1)}
         />
       </Section>
       <Section title={'Statistics'}>
