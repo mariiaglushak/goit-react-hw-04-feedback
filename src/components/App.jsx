@@ -10,6 +10,27 @@ const App = () => {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
+  const btnObj = { good, neutral, bad };
+
+  const handleUpdate = event => {
+    const { innerText } = event.target;
+
+    switch (innerText) {
+      case 'good':
+        setGood(prevState => prevState + 1);
+        break;
+      case 'neutral':
+        setNeutral(prevState => prevState + 1);
+        break;
+      case 'bad':
+        setBad(prevState => prevState + 1);
+        break;
+
+      default:
+        return;
+    }
+  };
+
   const countTotalFeedback = () => {
     return good + neutral + bad;
   };
@@ -22,9 +43,8 @@ const App = () => {
     <>
       <Section title={'Please leave feedback'}>
         <FeedbackOptions
-          good={() => setGood(prev => prev + 1)}
-          neutral={() => setNeutral(prev => prev + 1)}
-          bad={() => setBad(prev => prev + 1)}
+          options={Object.keys(btnObj)}
+          onLeaveFeedback={handleUpdate}
         />
       </Section>
       <Section title={'Statistics'}>
